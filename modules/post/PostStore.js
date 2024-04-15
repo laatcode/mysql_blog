@@ -1,4 +1,5 @@
 const pool = require('../../libs/mysql')
+const CustomError = require('../../CustomError')
 
 class PostStore {
 
@@ -13,7 +14,14 @@ class PostStore {
 
     findOne(id) {
         return pool.execute(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
-            .then(res => res[0][0])
+            .then(res => {
+                const found = res[0][0]
+                if(found) {
+                    return found
+                } else {
+                    throw new CustomError(404, 'Post no encontrado')
+                }
+            })
     }
 
     create(data) {
