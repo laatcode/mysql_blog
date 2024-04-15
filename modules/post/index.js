@@ -17,7 +17,7 @@ router
 
     .post('/', (req, res, next) => {
         controller.create(req.body)
-            .then(result => res.json(result))
+            .then(result => res.status(201).json(result))
             .catch(error => next(error))
     })
 
