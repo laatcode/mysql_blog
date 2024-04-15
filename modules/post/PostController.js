@@ -13,6 +13,10 @@ class PostController {
     findOne(id) {
         return this.store.findOne(id)
     }
+
+    create(data) {
+        return this.store.create(data)
+    }
 }
 
 module.exports = PostController

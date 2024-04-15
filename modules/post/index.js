@@ -15,4 +15,10 @@ router
             .catch(error => next(error))
     })
 
+    .post('/', (req, res, next) => {
+        controller.create(req.body)
+            .then(result => res.json(result))
+            .catch(error => next(error))
+    })
+
 module.exports = router

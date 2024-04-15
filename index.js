@@ -6,6 +6,7 @@ const routes = require('./routes')
 const errorHandler = require('./middlewares/errorHandler.middleware')
 const notFound = require('./middlewares/notFound.middleware')
 
+app.use(express.json())
 app.get('/', (req, res) => res.send('Server running'))
 routes(app)
 
