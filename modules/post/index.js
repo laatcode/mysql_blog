@@ -9,4 +9,10 @@ router
             .catch(error => next(error))
     })
 
+    .get('/:id', (req, res, next) => {
+        controller.findOne(req.params.id)
+            .then(result => res.json(result))
+            .catch(error => next(error))
+    })
+
 module.exports = router

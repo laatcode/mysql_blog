@@ -7,8 +7,13 @@ class PostStore {
     }
 
     find() {
-        return pool.execute(`SELECTS * FROM ${this.table}`)
+        return pool.execute(`SELECT * FROM ${this.table}`)
             .then(res => res[0])
+    }
+
+    findOne(id) {
+        return pool.execute(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
+            .then(res => res[0][0])
     }
 }
 

@@ -9,6 +9,10 @@ class PostController {
     find() {
         return this.store.find()
     }
+
+    findOne(id) {
+        return this.store.findOne(id)
+    }
 }
 
 module.exports = PostController

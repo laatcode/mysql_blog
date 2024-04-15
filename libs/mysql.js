@@ -13,6 +13,7 @@ pool.getConnection()
         connection.query('SHOW databases')
             .then(() => {
                 pool.releaseConnection(connection)
+                console.log('Conectado correctamente a la base de datos')
             })
     ).catch(error => {
         console.log(`Ha ocurrido un error al conectar a la base de datos: ${error}`)
