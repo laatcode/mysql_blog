@@ -33,6 +33,12 @@ class PostStore {
                     .then(() => this.findOne(id))
             })
     }
+
+    delete(id) {
+        return this.findOne(id)
+            .then(() => pool.execute(`DELETE FROM ${this.table} WHERE ID = ?`, [id]))
+            .then(() => `Post con id ${id} eliminado con éxito`)
+    }
 }
 
 module.exports = PostStore

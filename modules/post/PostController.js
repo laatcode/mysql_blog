@@ -21,6 +21,10 @@ class PostController {
     update(id, data) {
         return this.store.update(id, data)
     }
+
+    delete(id) {
+        return this.store.delete(id)
+    }
 }
 
 module.exports = PostController

@@ -27,4 +27,10 @@ router
             .catch(error => next(error))
     })
 
+    .delete('/:id', (req, res, next) => {
+        controller.delete(req.params.id)
+            .then(result => res.json(result))
+            .catch(error => next(error))
+    })
+
 module.exports = router
