@@ -20,6 +20,19 @@ class PostStore {
         return pool.execute(`INSERT INTO ${this.table} (title, content) VALUES (?, ?)`, [data.title, data.content])
             .then(res => this.findOne(res[0].insertId))
     }
+
+    update(id, data) {
+        return this.findOne(id)
+            .then(found => {
+                const postUpdated = {
+                    ...found,
+                    ...data
+                }
+                
+                return pool.execute(`UPDATE ${this.table} SET title = ?, content = ? WHERE id = ?`, [postUpdated.title, postUpdated.content, id])
+                    .then(() => this.findOne(id))
+            })
+    }
 }
 
 module.exports = PostStore

@@ -21,4 +21,10 @@ router
             .catch(error => next(error))
     })
 
+    .patch('/:id', (req, res, next) => {
+        controller.update(req.params.id, req.body)
+            .then(result => res.json(result))
+            .catch(error => next(error))
+    })
+
 module.exports = router

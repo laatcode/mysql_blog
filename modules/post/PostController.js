@@ -17,6 +17,10 @@ class PostController {
     create(data) {
         return this.store.create(data)
     }
+
+    update(id, data) {
+        return this.store.update(id, data)
+    }
 }
 
 module.exports = PostController
