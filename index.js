@@ -8,11 +8,13 @@ const routes = require('./routes')
 const resourceNotFound = require('./middlewares/resourceNotFound.middleware')
 const routeNotFound = require('./middlewares/routeNotFound.middleware')
 const errorHandler = require('./middlewares/errorHandler.middleware')
+const validationError = require('./middlewares/validationError.middleware')
 
 app.use(express.json())
 app.get('/', (req, res) => res.send('Server running'))
 routes(app)
 
+app.use(validationError)
 app.use(resourceNotFound)
 app.use(routeNotFound)
 app.use(errorHandler)
