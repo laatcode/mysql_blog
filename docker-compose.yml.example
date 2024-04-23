@@ -10,6 +10,7 @@ services:
       - MYSQL_DATABASE=YOUR_DB_NAME
       - MYSQL_USER=YOUR_DB_USER
       - MYSQL_PASSWORD=YOUR_DB_PASS
+      - TZ=America/Bogota
     ports:
       - 3306:3306
     volumes:

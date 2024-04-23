@@ -25,7 +25,7 @@ class PostStore {
     }
 
     create(data) {
-        return pool.execute(`INSERT INTO ${this.table} (title, content) VALUES (?, ?)`, [data.title, data.content])
+        return pool.execute(`INSERT INTO ${this.table} (title, content, created_at, updated_at) VALUES (?, ?, NOW(), NOW())`, [data.title, data.content])
             .then(res => this.findOne(res[0].insertId))
     }
 
@@ -37,7 +37,7 @@ class PostStore {
                     ...data
                 }
                 
-                return pool.execute(`UPDATE ${this.table} SET title = ?, content = ? WHERE id = ?`, [postUpdated.title, postUpdated.content, id])
+                return pool.execute(`UPDATE ${this.table} SET title = ?, content = ?, updated_at = NOW() WHERE id = ?`, [postUpdated.title, postUpdated.content, id])
                     .then(() => this.findOne(id))
             })
     }
