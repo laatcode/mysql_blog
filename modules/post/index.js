@@ -1,6 +1,8 @@
 const router = require('express').Router()
+const PostStore = require('./PostStore')
 const PostController = require('./PostController')
-const controller = new PostController()
+const controller = new PostController(PostStore, 'posts')
+const { getPostSchema, createPostSchema, updatePostSchema } = require('./post.validationSchema')
 
 router
     .get('/', (req, res, next) => {
@@ -10,25 +12,25 @@ router
     })
 
     .get('/:id', (req, res, next) => {
-        controller.findOne(req.params.id)
+        controller.findOne(getPostSchema, req.params.id)
             .then(result => res.json(result))
             .catch(error => next(error))
     })
 
     .post('/', (req, res, next) => {
-        controller.create(req.body)
+        controller.create(createPostSchema, req.body)
             .then(result => res.status(201).json(result))
             .catch(error => next(error))
     })
 
     .patch('/:id', (req, res, next) => {
-        controller.update(req.params.id, req.body)
+        controller.update(getPostSchema, updatePostSchema, req.params.id, req.body)
             .then(result => res.json(result))
             .catch(error => next(error))
     })
 
     .delete('/:id', (req, res, next) => {
-        controller.delete(req.params.id)
+        controller.delete(getPostSchema, req.params.id)
             .then(result => res.json(result))
             .catch(error => next(error))
     })
