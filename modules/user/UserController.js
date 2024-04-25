@@ -7,7 +7,7 @@ class UserController extends BaseController {
     constructor(Store, tableName) {
         super(Store, tableName)
         bcrypt.genSalt(10)
-            .then(res => this.salt = 10)
+            .then(res => this.salt = res)
     }
 
     async create(createSchema, data) {
@@ -51,7 +51,7 @@ class UserController extends BaseController {
         }
 
         return this.store.update(id, data)
-        
+
     }
 
 }
