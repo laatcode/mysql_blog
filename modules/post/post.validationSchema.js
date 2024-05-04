@@ -19,14 +19,22 @@ const content = Joi.string().min(3).messages({
     'any.required': '"content" es un campo obligatorio'
 })
 
+const userId = Joi.number().integer().messages({
+    'number.base': '"userId" debería ser un número',
+    'number.integer': '"userId", debería ser un número entero',
+    'any.required': '"userId" es un campo obligatorio'
+})
+
 const createPostSchema = Joi.object({
     title: title.required(),
-    content: content.required()
+    content: content.required(),
+    userId: userId.required()
 })
 
 const updatePostSchema = Joi.object({
     title,
-    content
+    content,
+    userId: userId.required()
 })
 
 const getPostSchema = Joi.object({

@@ -7,7 +7,7 @@ class PostStore extends BaseStore {
     }
 
     create(data) {
-        return this.pool.execute(`INSERT INTO ${this.table} (title, content, created_at, updated_at) VALUES (?, ?, NOW(), NOW())`, [data.title, data.content])
+        return this.pool.execute(`INSERT INTO ${this.table} (title, content, created_by, created_at, updated_by, updated_at) VALUES (?, ?, ?, NOW(), ?, NOW())`, [data.title, data.content, data.userId, data.userId])
             .then(res => this.findOne(res[0].insertId))
     }
 
@@ -19,7 +19,7 @@ class PostStore extends BaseStore {
                     ...data
                 }
                 
-                return this.pool.execute(`UPDATE ${this.table} SET title = ?, content = ?, updated_at = NOW() WHERE id = ?`, [postUpdated.title, postUpdated.content, id])
+                return this.pool.execute(`UPDATE ${this.table} SET title = ?, content = ?, updated_by = ?, updated_at = NOW() WHERE id = ?`, [postUpdated.title, postUpdated.content, postUpdated.userId, id])
                     .then(() => this.findOne(id))
             })
     }
