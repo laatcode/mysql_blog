@@ -1,5 +1,10 @@
 errorHandler = (error, req, res, next) => {
-    console.error(error)
+
+    if(error.customError) {
+        res.statusCode = error.statusCode
+    } else {
+        console.error(error)
+    }
 
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode
     res.status(statusCode).json({
