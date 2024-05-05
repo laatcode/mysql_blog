@@ -1,21 +1,28 @@
 {
   "name": "mysql_blog",
   "version": "1.0.0",
-  "description": "Aprendiendo MySQL",
+  "description": "Blog en MySQL",
   "main": "index.js",
+  "workspaces": [
+    "backend"
+  ],
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laatcode/mysql_blog.git"
+  },
+  "keywords": [
+    "Blog",
+    "MySQL",
+    "node",
+    "nodeJS"
+  ],
   "author": "Luis Angel Avila Torres",
   "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "joi": "^17.12.3",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.9.4"
-  }
+  "bugs": {
+    "url": "https://github.com/laatcode/mysql_blog/issues"
+  },
+  "homepage": "https://github.com/laatcode/mysql_blog#readme"
 }
