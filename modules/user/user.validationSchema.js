@@ -6,6 +6,20 @@ const id = Joi.number().integer().messages({
     'any.required': '"id" es un campo obligatorio'
 })
 
+const firstname = Joi.string().min(3).max(120).messages({
+    'string.base': '"firstName" debería ser texto',
+    'string.min': '"firstName" debería tener una longitud mínima de {#limit} caracteres',
+    'string.max': '"firstName" debería tener una longitud máxima de {#limit} caracteres',
+    'any.required': '"firstName" es un campo obligatorio'
+})
+
+const lastname = Joi.string().min(3).max(120).messages({
+    'string.base': '"lastName" debería ser texto',
+    'string.min': '"lastName" debería tener una longitud mínima de {#limit} caracteres',
+    'string.max': '"lastName" debería tener una longitud máxima de {#limit} caracteres',
+    'any.required': '"lastName" es un campo obligatorio'
+})
+
 const email = Joi.string().email().messages({
     'string.base': '"email" debería ser un correo electrónico',
     'string.email': '"email" debería ser un correo electrónico válido',
@@ -23,12 +37,16 @@ const confirmPassword = Joi.string().messages({
 })
 
 const createUserSchema = Joi.object({
+    firstname: firstname.required(),
+    lastname,
     email: email.required(),
     password: password.required(),
     confirmPassword: confirmPassword.required()
 })
 
 const updateUserSchema = Joi.object({
+    firstname,
+    lastname,
     email,
     password,
     confirmPassword

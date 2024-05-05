@@ -8,12 +8,12 @@ class UserStore extends BaseStore {
     }
 
     find() {
-        return this.pool.execute(`SELECT id, email, created_at, updated_at FROM ${this.table}`)
+        return this.pool.execute(`SELECT id, firstname, lastname, email, created_at, updated_at FROM ${this.table}`)
             .then(res => res[0])
     }
 
     findOne(id) {
-        return this.pool.execute(`SELECT id, email, created_at, updated_at FROM ${this.table} WHERE id = ?`, [id])
+        return this.pool.execute(`SELECT id, firstname, lastname, email, created_at, updated_at FROM ${this.table} WHERE id = ?`, [id])
             .then(res => {
                 const found = res[0][0]
                 if(found) {
@@ -25,7 +25,7 @@ class UserStore extends BaseStore {
     }
 
     create(data) {
-        return this.pool.execute(`INSERT INTO ${this.table} (email, password, created_at, updated_at) VALUES (?, ?, NOW(), NOW())`, [data.email, data.password])
+        return this.pool.execute(`INSERT INTO ${this.table} (firstname, lastname, email, password, created_at, updated_at) VALUES (?, ?, ?, ?, NOW(), NOW())`, [data.firstname, data.lastname, data.email, data.password])
             .then(res => this.findOne(res[0].insertId))
     }
 
@@ -37,9 +37,9 @@ class UserStore extends BaseStore {
                     ...data
                 }
 
-                const query = data.password ? `UPDATE ${this.table} SET email = ?, password = ?, updated_at = NOW() WHERE id = ?` : `UPDATE ${this.table} SET email = ?, updated_at = NOW() WHERE id = ?`
+                const query = data.password ? `UPDATE ${this.table} SET firstname = ?, lastname = ?, email = ?, password = ?, updated_at = NOW() WHERE id = ?` : `UPDATE ${this.table} SET first_name = ?, last_name = ?, email = ?, updated_at = NOW() WHERE id = ?`
                 
-                return this.pool.execute(query, data.password ? [userUpdated.email, userUpdated.password, id] : [userUpdated.email, id])
+                return this.pool.execute(query, data.password ? [userUpdated.firstname, userUpdated.lastname, userUpdated.email, userUpdated.password, id] : [userUpdated.firstname, userUpdated.lastname, userUpdated.email, id])
                     .then(() => this.findOne(id))
             })
     }
