@@ -1,5 +1,5 @@
 {
-  "name": "mysql_blog",
+  "name": "backend_mysql_blog",
   "version": "1.0.0",
   "description": "Aprendiendo MySQL",
   "main": "index.js",

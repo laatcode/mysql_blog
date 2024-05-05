@@ -1,12 +1,16 @@
 {
-  "name": "mysql_blog",
+  "name": "my-mono-repo",
   "version": "1.0.0",
+  "private": true,
   "description": "Blog en MySQL",
   "main": "index.js",
   "workspaces": [
-    "backend"
+    "backend",
+    "frontend"
   ],
   "scripts": {
+    "dev": "concurrently \"npm run dev -w backend\" \"npm run start -w frontend\"",
+    "start": "concurrently \"npm run start -w backend\" \"npm run start -w frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/laatcode/mysql_blog/issues"
   },
-  "homepage": "https://github.com/laatcode/mysql_blog#readme"
+  "homepage": "https://github.com/laatcode/mysql_blog#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
