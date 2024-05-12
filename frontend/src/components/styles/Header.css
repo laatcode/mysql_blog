@@ -1,0 +1,45 @@
+:root {
+    --bg-color: #29339B;
+    --text-color: #FFF;
+}
+
+.header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+    a {
+        text-decoration: none;
+        color: currentColor;
+    }
+
+    .left {
+        a {
+            font-size: 2rem;
+        }
+    }
+
+    .menu {
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                margin-left: 30px;
+
+                a {
+                    font-weight: bold;
+                }
+
+                a:hover {
+                    border-bottom: 3px solid currentColor;
+                }
+            }
+        }
+    }
+}
