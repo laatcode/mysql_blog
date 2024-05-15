@@ -1,6 +1,6 @@
 .post-summary {
+    display: block;
     border: 1px solid currentColor;
-    width: 100%;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 10px 6px 10px 0px rgba(0,0,0,0.75);
@@ -8,10 +8,6 @@
     text-decoration: none;
     color: currentColor;
     margin-bottom: 1rem;
-
-    .title {
-        margin-bottom: .5rem;
-    }
 
     .content {
         margin: 0;
