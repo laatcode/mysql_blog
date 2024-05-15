@@ -1,19 +1,20 @@
+import { Link } from 'react-router-dom'
 import './styles/Header.css'
 
 const Header = () => {
     return (
         <header className="header">
             <div className="left">
-                <a href="/">Blog</a>
+                <Link to="/">Blog</Link>
             </div>
             <div className="right">
                 <nav className='menu'>
                     <ul>
                         <li>
-                            <a href="/login">Iniciar sesión</a>
+                            <Link to="/login">Iniciar sesión</Link>
                         </li>
                         <li>
-                            <a href="/register">Registrarse</a>
+                            <Link to="/register">Registrarse</Link>
                         </li>
                     </ul>
                 </nav>
