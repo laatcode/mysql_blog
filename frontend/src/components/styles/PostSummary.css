@@ -1,15 +1,26 @@
 .post-summary {
     display: block;
     border: 1px solid currentColor;
-    padding: 20px;
     border-radius: 10px;
+    padding: 0 20px;
     box-shadow: 10px 6px 10px 0px rgba(0,0,0,0.75);
     background: #FFFF;
     text-decoration: none;
     color: currentColor;
     margin-bottom: 1rem;
-
+    
     .content {
-        margin: 0;
+        padding: 20px 0 10px;
+        
+        .text {
+            margin: 0;
+        }
     }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+
 }

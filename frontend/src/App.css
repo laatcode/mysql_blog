@@ -11,7 +11,7 @@ html, body, #root, .App {
     display: flex;
     flex-direction: column;
 
-    .content {
+    > .content {
         display: flex;
         flex: 1;
     }

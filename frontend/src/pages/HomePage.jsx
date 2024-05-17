@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { getAllPosts } from "../actions/postActions"
+import { getUser } from "../actions/usersActions"
 
 import './styles/HomePage.css'
 
@@ -16,8 +17,15 @@ const HomePage = () => {
     useEffect(() => {
         if(loading) {
             getAllPosts()
-                .then(posts => {
-                    setPosts(posts)
+                .then(async posts => {
+                    const data = await Promise.all(posts.map(post =>
+                        getUser(post.created_by)
+                            .then(user => ({
+                                ...post,
+                                created_by: `${user.firstname} ${user.lastname}`
+                            }))
+                    ))
+                    setPosts(data)
                     setLoading(false)
                 })
         }
