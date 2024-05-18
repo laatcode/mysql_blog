@@ -1,0 +1,15 @@
+.post-page {
+    .header {
+        margin-bottom: 2rem;
+
+        h2 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .content {
+        p {
+            margin: 0;
+        }
+    }
+}

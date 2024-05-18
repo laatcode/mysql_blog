@@ -3,7 +3,7 @@
     --text-color: #FFF;
 }
 
-.header {
+header.header {
 
     padding: 10px 20px;
     background-color: var(--bg-color);
