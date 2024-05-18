@@ -33,18 +33,20 @@ const HomePage = () => {
 
     return (
         <section className="home-page">
+            {loading ? <Loader />
+            : posts.length ?
             <Container>
                 <Row>
                     <Col>
-                        {loading ? <Loader />
-                        : posts.length ?
-                        posts.map(post => (
+                        {posts.map(post => (
                             <PostSummary key={post.id} post={post} />
-                        ))
-                        : "No hay post a mostrar"}
+                        ))}
                     </Col>
                 </Row>
-            </Container>
+            </Container> :
+            <div className="empty-post-list">
+                <p>No hay post a mostrar</p>
+            </div>}
         </section>
     )
 }
