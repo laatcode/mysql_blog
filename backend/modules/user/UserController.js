@@ -12,13 +12,7 @@ class UserController extends BaseController {
 
     async create(createSchema, data) {
         this.validateData(createSchema, data)
-
-        if(data.password !== data.confirmPassword) {
-            throw new ValidationError('Las contraseñas no coinciden')
-        }
-
         const password = await bcrypt.hash(data.password, this.salt)
-
         const processedData = {
             ...data,
             password
@@ -35,13 +29,8 @@ class UserController extends BaseController {
             throw new ValidationError('Los campos a actualizar son obligatorios')
         }
 
-        if(data.password && data.password !== data.confirmPassword) {
-            throw new ValidationError('Las contraseñas no coinciden')
-        }
-
         if(data.password) {
             const password = await bcrypt.hash(data.password, this.salt)
-            
             const processedData = {
                 ...data,
                 password

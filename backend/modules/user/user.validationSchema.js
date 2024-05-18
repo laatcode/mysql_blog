@@ -7,17 +7,17 @@ const id = Joi.number().integer().messages({
 })
 
 const firstname = Joi.string().min(3).max(120).messages({
-    'string.base': '"firstName" debería ser texto',
-    'string.min': '"firstName" debería tener una longitud mínima de {#limit} caracteres',
-    'string.max': '"firstName" debería tener una longitud máxima de {#limit} caracteres',
-    'any.required': '"firstName" es un campo obligatorio'
+    'string.base': '"firstname" debería ser texto',
+    'string.min': '"firstname" debería tener una longitud mínima de {#limit} caracteres',
+    'string.max': '"firstname" debería tener una longitud máxima de {#limit} caracteres',
+    'any.required': '"firstname" es un campo obligatorio'
 })
 
 const lastname = Joi.string().min(3).max(120).messages({
-    'string.base': '"lastName" debería ser texto',
-    'string.min': '"lastName" debería tener una longitud mínima de {#limit} caracteres',
-    'string.max': '"lastName" debería tener una longitud máxima de {#limit} caracteres',
-    'any.required': '"lastName" es un campo obligatorio'
+    'string.base': '"lastname" debería ser texto',
+    'string.min': '"lastname" debería tener una longitud mínima de {#limit} caracteres',
+    'string.max': '"lastname" debería tener una longitud máxima de {#limit} caracteres',
+    'any.required': '"lastname" es un campo obligatorio'
 })
 
 const email = Joi.string().email().messages({
@@ -31,25 +31,18 @@ const password = Joi.string().messages({
     'any.required': '"password" es un campo obligatorio'
 })
 
-const confirmPassword = Joi.string().messages({
-    'string.base': '"confirmPassword" debería ser un tipo de texto',
-    'any.required': '"confirmPassword" es un campo obligatorio'
-})
-
 const createUserSchema = Joi.object({
     firstname: firstname.required(),
     lastname,
     email: email.required(),
-    password: password.required(),
-    confirmPassword: confirmPassword.required()
+    password: password.required()
 })
 
 const updateUserSchema = Joi.object({
     firstname,
     lastname,
     email,
-    password,
-    confirmPassword
+    password
 })
 
 const getUserSchema = Joi.object({
