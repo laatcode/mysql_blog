@@ -1,0 +1,30 @@
+.register-page {
+    background: #C6C6C6;
+
+    .container, .row {
+        height: 100%;
+
+        .col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .form {
+                width: max(400px, 40%);
+
+                .title {
+                    margin-bottom: 1.5rem;
+                    text-align: center;
+                }
+
+                .form-floating {
+                    margin-bottom: 1rem;
+                }
+
+                .buttons {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
