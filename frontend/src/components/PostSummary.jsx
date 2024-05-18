@@ -2,14 +2,18 @@ import { Link } from 'react-router-dom'
 import { formatDistance } from 'date-fns'
 import {es } from 'date-fns/locale'
 import './styles/PostSummary.css'
+import { excerpt } from '../tools/formaters'
 
 const PostSummary = ({ post }) => {
+
+    const excerptLength = 600
+
     return (
         <Link className="post-summary" to={`/posts/${post.id}`}>
             <article>
                 <div className="content">
                     <h5 className='title'>{post.title}</h5>
-                    <p className='text'>{post.content}</p>
+                    <p className='text'>{excerpt(post.content, excerptLength)}</p>
                 </div>
                 <div className="footer">
                     <span className="user">{post.created_by}</span>
