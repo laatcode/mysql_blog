@@ -20,10 +20,10 @@ class AuthController {
                     return this.generateToken(id)
                 }
 
-                throw new CustomError(400, 'Usuario y/o contraseña incorrecta')
+                throw new CustomError(401, 'Usuario y/o contraseña incorrecta')
             }
         }
-        throw new CustomError(400, 'Usuario y/o contraseña incorrecta')
+        throw new CustomError(401, 'Usuario y/o contraseña incorrecta')
     }
 
     generateToken(id) {
