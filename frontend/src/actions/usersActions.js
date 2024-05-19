@@ -5,12 +5,17 @@ export const getUser = userId =>
         .then(res => res.data)
 
 export const register = ({firstname, lastname, email, password}) =>
-    axios.post('/users', {
+    axios.post('/usersa', {
         firstname,
         lastname,
         email,
         password
     }).then(res => res.data)
+    .catch(error => {
+        if(error.response.data?.message)
+        throw new Error(error.response.data.message)
+        throw new Error("Ha ocurrido un error inesperado, por favor inténtelo más tarde")
+    })
 
 export const login = ({email, password}) =>
     axios.post('/auth/login', {

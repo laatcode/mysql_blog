@@ -6,7 +6,9 @@ const Message = ({ variant = "info", children }) => (
     <Row>
         <Col>
             <Alert variant={variant} className="text-center">
-                {children}
+                {typeof children === "string" && children.includes(".") ?
+                children.split(".").map(message => <span className="d-block">{message}</span>)
+                : children}
             </Alert>
         </Col>
     </Row>

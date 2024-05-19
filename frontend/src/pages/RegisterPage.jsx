@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col"
 import FloatingLabel from "react-bootstrap/FloatingLabel"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
+import Message from "../components/Message"
 import { login, register } from "../actions/usersActions"
 import "./styles/RegisterPage.css"
 
@@ -14,6 +15,7 @@ const RegisterPage = ({ userData, setUserData }) => {
 
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         if(userData) {
@@ -64,6 +66,9 @@ const RegisterPage = ({ userData, setUserData }) => {
                 password: e.target.password.value
             })).then(res => {
                 setUserData(res)
+            }).catch(error => {
+                setError(error.message)
+                setLoading(false)
             })
         }
     }
@@ -76,6 +81,7 @@ const RegisterPage = ({ userData, setUserData }) => {
                     <Col>
                         <Form className="form" onSubmit={submitHandler}>
                             <h3 className="title">Registrarse</h3>
+                            {error && <Message variant="danger">{error}</Message>}
                             <FloatingLabel label="Nombres">
                                 <Form.Control type="text" name="firstname" placeholder="Nombre" autoFocus />
                                 <Form.Control.Feedback type="invalid">
