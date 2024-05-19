@@ -6,6 +6,7 @@ import Footer from "./components/Footer"
 import HomePage from "./pages/HomePage"
 import PostPage from "./pages/PostPage"
 import RegisterPage from "./pages/RegisterPage"
+import LoginPage from "./pages/LoginPage"
 import "./App.css"
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
                     <Route path='/' element={<HomePage />} />
                     <Route path='/posts/:id' element={<PostPage />} />
                     <Route path='/register' element={<RegisterPage userData={userData} setUserData={setUserData} />} />
+                    <Route path='/login' element={<LoginPage userData={userData} setUserData={setUserData} />} />
                 </Routes>
             </main>
             <Footer />
