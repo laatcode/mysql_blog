@@ -1,12 +1,13 @@
+import axios from "axios"
 import { getUser } from "./usersActions"
 
 export const getAllPosts = () =>
-    fetch('/posts')
-        .then(res => res.json())
+    axios.get('/posts')
+        .then(res => res.data)
 
 export const getSinglePost = postId =>
-    fetch(`/posts/${postId}`)
-        .then(res => res.json())
+    axios.get(`/posts/${postId}`)
+        .then(res => res.data)
         .then(async post => {
             const userData = await getUser(post.created_by)
             return {
