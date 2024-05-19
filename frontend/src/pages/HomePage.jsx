@@ -13,6 +13,7 @@ const HomePage = () => {
 
     const [loading, setLoading] = useState(true)
     const [posts, setPosts] = useState([])
+    const [error, setError] = useState("")
 
     useEffect(() => {
         if(loading) {
@@ -27,14 +28,20 @@ const HomePage = () => {
                     ))
                     setPosts(data)
                     setLoading(false)
+                }).catch(() => {
+                    setError("Ha ocurrido un error inesperado, por favor inténtelo más tarde")
+                    setLoading(false)
                 })
         }
     }, [loading, posts])
 
     return (
         <section className="home-page">
-            {loading ? <Loader />
-            : posts.length ?
+            {loading ? <Loader /> :
+            error ? <div className="focused-message">
+                <p>{error}</p>
+            </div> :
+            posts.length ?
             <Container>
                 <Row>
                     <Col>

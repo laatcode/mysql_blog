@@ -1,7 +1,7 @@
 .home-page {
     background: #C6C6C6;
 
-    .empty-post-list {
+    .focused-message {
         height: 100%;
         display: flex;
         justify-content: center;
