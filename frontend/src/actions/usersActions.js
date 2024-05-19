@@ -16,7 +16,7 @@ export const register = ({firstname, lastname, email, password}) =>
         })
     }).then(res => res.json())
 
-export const login = ({firstname, lastname, email, password}) =>
+export const login = ({email, password}) =>
     fetch('/auth/login', {
         method: 'POST',
         headers: {
@@ -29,8 +29,8 @@ export const login = ({firstname, lastname, email, password}) =>
     }).then(res => res.json())
     .then(res => {
         const userData = {
-            firstname,
-            lastname,
+            firstname: res.firstname,
+            lastname: res.lastname,
             token: res.token
         }
         sessionStorage.setItem("userData", JSON.stringify(userData))

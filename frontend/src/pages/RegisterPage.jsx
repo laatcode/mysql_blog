@@ -60,13 +60,10 @@ const RegisterPage = ({ userData, setUserData }) => {
                 email: e.target.email.value,
                 password: e.target.password.value
             }).then(() => login({
-                firstname: e.target.firstname.value,
-                lastname: e.target.lastname.value,
                 email: e.target.email.value,
                 password: e.target.password.value
             })).then(res => {
                 setUserData(res)
-                navigate("/")
             })
         }
     }
