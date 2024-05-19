@@ -1,33 +1,31 @@
 import { Link } from "react-router-dom"
+import {LinkContainer} from "react-router-bootstrap"
+import Navbar from "react-bootstrap/Navbar"
+import Nav from "react-bootstrap/Nav"
 import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
 import "./styles/Header.css"
 
-const Header = () => {
+const Header = ({ userData, setUserData }) => {
     return (
         <header className="header">
-            <Container>
-                <Row>
-                    <Col>
-                        <div className="left">
-                            <Link to="/">Blog</Link>
-                        </div>
-                        <div className="right">
-                            <nav className='menu'>
-                                <ul>
-                                    <li>
-                                        <Link to="/login">Iniciar sesión</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/register">Registrarse</Link>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <Navbar expand="md">
+                <Container>
+                    <Navbar.Brand>
+                        <Link to="/">Blog</Link>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                    <Navbar.Collapse>
+                        <Nav>
+                            <LinkContainer to="/login">
+                                <Link>Iniciar sesión</Link>
+                            </LinkContainer>
+                            <LinkContainer to="/register">
+                                <Link>Registrarse</Link>
+                            </LinkContainer>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         </header>
     )
 }

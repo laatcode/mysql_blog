@@ -14,7 +14,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <Header />
+            <Header userData={userData} setUserData={setUserData} />
             <main className="main">
                 <Routes>
                     <Route path='/' element={<HomePage />} />
