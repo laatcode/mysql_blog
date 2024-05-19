@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {LinkContainer} from "react-router-bootstrap"
 import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
@@ -7,6 +7,15 @@ import Container from "react-bootstrap/Container"
 import "./styles/Header.css"
 
 const Header = ({ userData, setUserData }) => {
+
+    const navigate = useNavigate()
+
+    const logoutHandler = () => {
+        sessionStorage.removeItem("userData")
+        setUserData(null)
+        navigate("/login")
+    }
+
     return (
         <header className="header">
             <Navbar expand="md">
@@ -23,7 +32,7 @@ const Header = ({ userData, setUserData }) => {
                                     <NavDropdown.Item>Mi perfil</NavDropdown.Item>
                                 </LinkContainer>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item>Salir</NavDropdown.Item>
+                                <NavDropdown.Item onClick={logoutHandler}>Salir</NavDropdown.Item>
                             </NavDropdown>
                         </Nav> :
                         <Nav>
