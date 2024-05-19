@@ -31,16 +31,23 @@ header.header {
     
             .navbar-collapse {
                 justify-content: end;
-    
-                a {
-                    margin-left: 30px;
-                    font-weight: bold;
-                    border: 3px solid transparent;
+
+                .navbar-nav {
+                    > a {
+                        margin-left: 30px;
+                        font-weight: bold;
+                        border: 3px solid transparent;
+                    }
+        
+                    > a:hover {
+                        border-bottom: 3px solid currentColor;
+                    }
+
+                    .dropdown-toggle {
+                        font-weight: bold;
+                    }
                 }
     
-                a:hover {
-                    border-bottom: 3px solid currentColor;
-                }
             }   
         }
     }
