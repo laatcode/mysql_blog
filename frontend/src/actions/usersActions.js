@@ -24,7 +24,8 @@ export const login = ({email, password}) =>
         }
         sessionStorage.setItem("userData", JSON.stringify(userData))
         return userData
-    })
-    .catch(error => {
+    }).catch(error => {
+        if(error.response.data.message)
         throw new Error(error.response.data.message)
+        throw new Error("Ha ocurrido un error inesperado, por favor inténtelo más tarde")
     })

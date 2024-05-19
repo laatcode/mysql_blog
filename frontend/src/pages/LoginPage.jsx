@@ -9,11 +9,13 @@ import FloatingLabel from "react-bootstrap/FloatingLabel"
 import Button from "react-bootstrap/Button"
 import { login } from "../actions/usersActions"
 import "./styles/LoginPage.css"
+import Message from "../components/Message"
 
 const LoginPage = ({ userData, setUserData }) => {
 
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         if(userData) {
@@ -47,6 +49,9 @@ const LoginPage = ({ userData, setUserData }) => {
                 password: e.target.password.value
             }).then(res => {
                 setUserData(res)
+            }).catch(error => {
+                setError(error.message)
+                setLoading(false)
             })
         }
 
@@ -60,6 +65,7 @@ const LoginPage = ({ userData, setUserData }) => {
                     <Col>
                         <Form className="form" onSubmit={submitHandler}>
                             <h3 className="title">Iniciar sesión</h3>
+                            {error && <Message variant="danger">{error}</Message>}
                             <FloatingLabel label="Correo electrónico">
                                 <Form.Control type="email" name="email" placeholder="Correo electrónico" />
                                 <Form.Control.Feedback type="invalid">
