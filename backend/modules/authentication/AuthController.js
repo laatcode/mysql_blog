@@ -10,14 +10,18 @@ class AuthController {
     }
 
     async login(email, passwordSent) {
-        const data = await pool.execute(`SELECT id, password FROM users WHERE email = ?`, [email])
+        const data = await pool.execute(`SELECT id, firstname, lastname, password FROM users WHERE email = ?`, [email])
         if (data[0].length) {
-            const { id, password } = data[0][0]
+            const { id, firstname, lastname, password } = data[0][0]
             if (password) {
                 const result = await bcrypt.compare(passwordSent, password)
 
                 if (result) {
-                    return this.generateToken(id)
+                    return {
+                        firstname,
+                        lastname,
+                        token: this.generateToken(id)
+                    }
                 }
 
                 throw new CustomError(401, 'Usuario y/o contraseña incorrecta')
